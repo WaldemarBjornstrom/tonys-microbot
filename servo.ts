@@ -13,6 +13,8 @@ namespace tonys_microbot {
     let distancePerSec = 100
     let numberOfDegreesPerSec = 200
     let setspeed = 100
+    let Pi1 = AnalogPin.P1
+    let Pi2 = AnalogPin.P8
 
     /**
      * Drives forwards. Call stop to stop
@@ -22,8 +24,8 @@ namespace tonys_microbot {
     export function forward(): void {
         let P1speed = 90 - (setspeed * 90) / 100
         let P2speed = (setspeed * 90) / 100 + 90
-        pins.servoWritePin(AnalogPin.P1, P1speed);
-        pins.servoWritePin(AnalogPin.P2, P2speed);
+        pins.servoWritePin(Pi1, P1speed);
+        pins.servoWritePin(Pi2, P2speed);
     }
 
     /**
@@ -34,8 +36,8 @@ namespace tonys_microbot {
     export function backward(): void {
         let P2speed = 90 - (setspeed * 90) / 100
         let P1speed = (setspeed * 90) / 100 + 90
-        pins.servoWritePin(AnalogPin.P1, P1speed);
-        pins.servoWritePin(AnalogPin.P2, P2speed);
+        pins.servoWritePin(Pi1, P1speed);
+        pins.servoWritePin(Pi2, P2speed);
     }
 
     /**
@@ -44,8 +46,10 @@ namespace tonys_microbot {
     //% blockId=tonys_microbot_servos_left
     //% block="turn left"
     export function left(): void {
-        pins.servoWritePin(AnalogPin.P1, 0);
-        pins.servoWritePin(AnalogPin.P2, 0);
+        let P1speed = 90 - (setspeed * 90) / 100
+        let P2speed = 90 - (setspeed * 90) / 100
+        pins.servoWritePin(Pi1, P1speed);
+        pins.servoWritePin(Pi2, P2speed);
     }
 
     /**
@@ -54,8 +58,10 @@ namespace tonys_microbot {
     //% blockId=tonys_microbot_servos_right
     //% block="turn right"
     export function right(): void {
-        pins.servoWritePin(AnalogPin.P1, 180);
-        pins.servoWritePin(AnalogPin.P2, 180);
+        let P2speed = (setspeed * 90) / 100 + 90
+        let P1speed = (setspeed * 90) / 100 + 90
+        pins.servoWritePin(Pi1, P1speed);
+        pins.servoWritePin(Pi2, P2speed);
     }
 
     /**
@@ -68,8 +74,8 @@ namespace tonys_microbot {
     //% blockId=tonys_microbot_servos_stop
     //% block="stop"
     export function stop(): void {
-        pins.analogWritePin(AnalogPin.P1, 0);
-        pins.analogWritePin(AnalogPin.P2, 0);
+        pins.analogWritePin(Pi1, 0);
+        pins.analogWritePin(Pi2, 0);
     }
 
     /**
@@ -79,8 +85,8 @@ namespace tonys_microbot {
     //% blockId=tonys_microbot_servos_neutral
     //% block="goto neutral position"
     export function neutral(): void {
-        pins.servoWritePin(AnalogPin.P1, 90);
-        pins.servoWritePin(AnalogPin.P2, 90);
+        pins.servoWritePin(Pi1, 90);
+        pins.servoWritePin(Pi2, 90);
     }
 
     /**
@@ -120,8 +126,8 @@ namespace tonys_microbot {
     //% block="turn right %deg|degrees"
     export function turnRight(deg: number): void {
         let timeToWait = (deg * microSecInASecond) / numberOfDegreesPerSec;// calculation done this way round to avoid zero rounding
-        pins.servoWritePin(AnalogPin.P1, 130);
-        pins.servoWritePin(AnalogPin.P2, 130);
+        pins.servoWritePin(Pi1, 130);
+        pins.servoWritePin(Pi2, 130);
         control.waitMicros(timeToWait);
         stop();
     }
@@ -137,8 +143,8 @@ namespace tonys_microbot {
     //% block="turn left %deg|degrees"
     export function turnLeft(deg: number): void {
         let timeToWait = (deg * microSecInASecond) / numberOfDegreesPerSec;// calculation done this way round to avoid zero rounding
-        pins.servoWritePin(AnalogPin.P1, 50);
-        pins.servoWritePin(AnalogPin.P2, 50);
+        pins.servoWritePin(Pi1, 50);
+        pins.servoWritePin(Pi2, 50);
         control.waitMicros(timeToWait);
         stop()
     }
@@ -175,5 +181,4 @@ namespace tonys_microbot {
     export function set_motor_speed(speed = 100): void {
         setspeed = speed
     }
-
 }
