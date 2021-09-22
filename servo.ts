@@ -199,9 +199,10 @@ namespace tonys_microbot {
     * Sets the servo pins to other than P1 and P2
     */
     //% blockId=tonys_microbot_set_pins
-    //% block="set motor speed %pin"
+    //% block="Servo 1: %pin| Servo 2: %pin2"
     //% parts="Tony's micro:bot" advanced=true
-    export function set_pins(pin: AnalogPin): void {
-        let functest = pin
+    export function set_pins(pin: AnalogPin, pin2: AnalogPin): void {
+        Pi1 = pin
+        Pi2 = pin2
     }
 }
