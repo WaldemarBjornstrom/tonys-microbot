@@ -201,7 +201,7 @@ namespace tonys_microbot {
     //% blockId=tonys_microbot_set_pins
     //% block="set motor speed %pin"
     //% parts="Tony's micro:bot" advanced=true
-    export function set_pins(pin: string): void {
+    export function set_pins(pin: AnalogPin): void {
         let functest = pin
     }
 }
