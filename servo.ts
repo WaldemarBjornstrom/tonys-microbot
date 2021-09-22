@@ -21,6 +21,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_servos_forward
     //% block="drive forward"
+    //% parts="Tony's micro:bot"
     export function forward(): void {
         let P1speed = 90 - (setspeed * 90) / 100
         let P2speed = (setspeed * 90) / 100 + 90
@@ -32,7 +33,8 @@ namespace tonys_microbot {
      * Drives backwards. Call stop to stop
      */
     //% blockId=tonys_microbot_servos_backward
-    //% block="drive backward"
+    //% block="drive backward"¨
+    //% parts="Tony's micro:bot"
     export function backward(): void {
         let P2speed = 90 - (setspeed * 90) / 100
         let P1speed = (setspeed * 90) / 100 + 90
@@ -45,6 +47,7 @@ namespace tonys_microbot {
     */
     //% blockId=tonys_microbot_servos_left
     //% block="turn left"
+    //% parts="Tony's micro:bot"
     export function left(): void {
         let P1speed = 90 - (setspeed * 90) / 100
         let P2speed = 90 - (setspeed * 90) / 100
@@ -57,6 +60,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_servos_right
     //% block="turn right"
+    //% parts="Tony's micro:bot"
     export function right(): void {
         let P2speed = (setspeed * 90) / 100 + 90
         let P1speed = (setspeed * 90) / 100 + 90
@@ -73,6 +77,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_servos_stop
     //% block="stop"
+    //% parts="Tony's micro:bot"
     export function stop(): void {
         pins.analogWritePin(Pi1, 0);
         pins.analogWritePin(Pi2, 0);
@@ -84,6 +89,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_servos_neutral
     //% block="goto neutral position"
+    //% parts="Tony's micro:bot"
     export function neutral(): void {
         pins.servoWritePin(Pi1, 90);
         pins.servoWritePin(Pi2, 90);
@@ -95,6 +101,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_drive_forwards
     //% block="drive forwards %howFar|distance" 
+    //% parts="Tony's micro:bot"
     export function driveForwards(howFar: number): void {
         let timeToWait = (howFar * microSecInASecond) / distancePerSec; // calculation done this way round to avoid zero rounding
         forward();
@@ -108,6 +115,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_drive_backwards
     //% block="drive backwards %howFar|distance" 
+    //% parts="Tony's micro:bot"
     export function driveBackwards(howFar: number): void {
         let timeToWait = (howFar * microSecInASecond) / distancePerSec; // calculation done this way round to avoid zero rounding
         backward();
@@ -124,6 +132,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_turn_right
     //% block="turn right %deg|degrees"
+    //% parts="Tony's micro:bot"
     export function turnRight(deg: number): void {
         let timeToWait = (deg * microSecInASecond) / numberOfDegreesPerSec;// calculation done this way round to avoid zero rounding
         pins.servoWritePin(Pi1, 130);
@@ -141,6 +150,7 @@ namespace tonys_microbot {
     */
     //% blockId=tonys_microbot_turn_left
     //% block="turn left %deg|degrees"
+    //% parts="Tony's micro:bot"
     export function turnLeft(deg: number): void {
         let timeToWait = (deg * microSecInASecond) / numberOfDegreesPerSec;// calculation done this way round to avoid zero rounding
         pins.servoWritePin(Pi1, 50);
@@ -155,7 +165,8 @@ namespace tonys_microbot {
      * @param degPerSec : How many degrees per second the mini does.
      */
     //% blockId=tonys_microbot_set_turn_speed_param
-    //% block="calibrate turn speed to %DegPerSec|degrees per second" 
+    //% block="calibrate turn speed to %DegPerSec|degrees per second"
+    //% parts="Tony's micro:bot"
     export function setDegreesPerSecond(degPerSec: number): void {
         numberOfDegreesPerSec = degPerSec
     }
@@ -167,6 +178,7 @@ namespace tonys_microbot {
      */
     //% blockId=tonys_microbot_set_movement_speed_param 
     //% block="calibrate forward speed to %DistPerSec|mm per second"
+    //% parts="Tony's micro:bot"
     export function setDistancePerSecond(distPerSec: number): void {
         distancePerSec = distPerSec
     }
@@ -178,7 +190,18 @@ namespace tonys_microbot {
     //% blockId=tonys_microbot_set_motor_speed
     //% block="set motor speed %speed"
     //% speed.min=0 speed.max=100
+    //% parts="Tony's micro:bot"
     export function set_motor_speed(speed = 100): void {
         setspeed = speed
+    }
+
+    /**
+    * Sets the servo pins to other than P1 and P2
+    */
+    //% blockId=tonys_microbot_set_pins
+    //% block="set motor speed %pin"
+    //% parts="Tony's micro:bot" advanced=true
+    export function set_pins(pin: string): void {
+        let functest = pin
     }
 }
