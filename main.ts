@@ -59,7 +59,7 @@ namespace tonys_microbot {
     * @param sspeed : Hastighet från 0 till 100
     */
     //% blockId=tonys_microbot_set_motor_speed
-    //% block="Ställ in motorhastigheten till %speed|%"
+    //% block="Ställ in motorhastigheten till %speed|Procent"
     //% sspeed.min=0 speed.max=100
     //% parts="Tony's micro:bot"
     export function set_motor_speed(sspeed = 100): void {
