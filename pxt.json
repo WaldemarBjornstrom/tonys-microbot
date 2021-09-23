@@ -4,11 +4,12 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "servo": "*"
     },
     "files": [
         "README.md",
-        "servo.ts"
+        "main.ts"
     ],
     "testFiles": [
         "test.ts"
